@@ -13,7 +13,6 @@ from jwt.exceptions import ExpiredSignatureError
 from common.djangoapps.student.models import UserProfile, anonymous_id_for_user
 
 
-
 class AccessTokenMixin:
     """ Mixin for tests dealing with OAuth 2 access tokens. """
 
