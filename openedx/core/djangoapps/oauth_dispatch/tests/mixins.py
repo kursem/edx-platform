@@ -3,11 +3,8 @@ OAuth Dispatch test mixins
 """
 
 import pytest
-import jwt
 from django.conf import settings
 from edx_rest_framework_extensions.auth.jwt.decoder import get_signing_jwk_key_set, verify_jwk_signature_using_keyset
-from jwt.api_jwk import PyJWK, PyJWKSet
-from jwt.utils import base64url_encode
 from jwt.exceptions import ExpiredSignatureError
 
 from common.djangoapps.student.models import UserProfile, anonymous_id_for_user
