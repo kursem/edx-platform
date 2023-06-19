@@ -34,7 +34,7 @@ class AccessTokenMixin:
             Helper method to decode a JWT with the ability to
             verify the expiration of said token
             """
-            key_set = get_signing_jwk_key_set(secret_key, should_be_asymmetric_key)
+            key_set = get_signing_jwk_key_set(secret_key, add_asymmetric_keys=should_be_asymmetric_key)
             data = verify_jwk_signature_using_keyset(access_token,
                                                      key_set,
                                                      iss=issuer,
