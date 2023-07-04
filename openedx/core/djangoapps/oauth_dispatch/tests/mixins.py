@@ -44,7 +44,6 @@ class AccessTokenMixin:
 
             return data
 
-
         # Note that if we expect the claims to have expired
         # then we ask the JWT library not to verify expiration
         # as that would throw a ExpiredSignatureError and
