@@ -4,7 +4,10 @@ OAuth Dispatch test mixins
 
 import pytest
 from django.conf import settings
-from edx_rest_framework_extensions.auth.jwt.decoder import get_signing_jwk_key_set, verify_jwk_signature_using_keyset
+from edx_rest_framework_extensions.auth.jwt.decoder import (
+    get_verification_jwk_key_set,
+    verify_jwk_signature_using_keyset
+)
 from jwt.exceptions import ExpiredSignatureError
 
 from common.djangoapps.student.models import UserProfile, anonymous_id_for_user
@@ -31,7 +34,8 @@ class AccessTokenMixin:
             Helper method to decode a JWT with the ability to
             verify the expiration of said token
             """
-            key_set = get_signing_jwk_key_set(secret_key, add_asymmetric_keys=should_be_asymmetric_key)
+            asymmetric_keys = settings.JWT_AUTH.get('JWT_PUBLIC_SIGNING_JWK_SET') if should_be_asymmetric_key else None
+            key_set = get_verification_jwk_key_set(asymmetric_keys=asymmetric_keys, secret_key=secret_key)
             data = verify_jwk_signature_using_keyset(access_token,
                                                      key_set,
                                                      iss=issuer,
