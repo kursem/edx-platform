@@ -227,7 +227,9 @@ class UserNotificationPreferenceAPITest(ModuleStoreTestCase):
                                     'following, including endorsements to your responses and on your posts.'
                         },
                         'new_discussion_post': {'web': False, 'email': False, 'push': False, 'info': ''},
-                        'new_question_post': {'web': False, 'email': False, 'push': False, 'info': ''}
+                        'new_question_post': {'web': False, 'email': False, 'push': False, 'info': ''},
+                        'response_on_followed_post': {'web': False, 'email': False, 'push': False, 'info': ''},
+                        'comment_on_followed_post': {'web': False, 'email': False, 'push': False, 'info': ''}
                     },
                     'non_editable': {
                         'core': ['web']
