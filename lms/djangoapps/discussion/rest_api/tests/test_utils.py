@@ -236,7 +236,7 @@ class TestSendResponseNotifications(ForumsEnableMixin, CommentsServiceMockMixin,
 
         send_response_notifications(self.thread, self.course, self.user_3, parent_id=self.thread_2.id)
         # check if 2 call are made to the handler i.e. one for the response creator and one for the thread creator
-        self.assertEqual(handler.call_count, 3)
+        self.assertEqual(handler.call_count, 2)
 
         # check if the notification is sent to the thread creator
         args_comment = handler.call_args_list[0][1]['notification_data']
@@ -404,6 +404,16 @@ class TestSendCommentNotification(ForumsEnableMixin, CommentsServiceMockMixin, M
 
         thread = ThreadMock(thread_id=1, creator=self.user_1, title='test thread')
         response = ThreadMock(thread_id=2, creator=self.user_2, title='test response')
+        mock_response = {
+            'collection': [],
+            'page': 1,
+            'num_pages': 1,
+            'subscriptions_count': 0,
+            'corrected_text': None
+
+        }
+        self.register_get_subscriptions(thread.id, mock_response)
+
         self.register_get_comment_response({
             'id': response.id,
             'thread_id': 'abc',
