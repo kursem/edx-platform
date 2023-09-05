@@ -12,14 +12,12 @@ from pytz import UTC
 from common.djangoapps.student.roles import CourseInstructorRole, CourseStaffRole
 from lms.djangoapps.discussion.django_comment_client.utils import has_discussion_privileges
 from lms.djangoapps.discussion.rest_api.discussions_notifications import DiscussionNotificationSender
-from openedx.core.djangoapps.course_groups.models import CourseCohortsSettings
 from openedx.core.djangoapps.discussions.models import DiscussionsConfiguration, PostingRestriction
 from openedx.core.djangoapps.django_comment_common.models import (
     FORUM_ROLE_ADMINISTRATOR,
     FORUM_ROLE_COMMUNITY_TA,
     FORUM_ROLE_GROUP_MODERATOR,
     FORUM_ROLE_MODERATOR,
-    CourseDiscussionSettings,
     Role
 )
 

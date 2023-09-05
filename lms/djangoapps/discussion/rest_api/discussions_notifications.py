@@ -116,9 +116,19 @@ class DiscussionNotificationSender:
         if (
             self.parent_response and
             self.creator.id != int(self.parent_response.user_id) and not
-        self._response_and_thread_has_same_creator()
+            self._response_and_thread_has_same_creator()
         ):
             self._send_notification([self.parent_response.user_id], "new_comment_on_response")
+
+    def _check_if_subscriber_is_not_thread_or_content_creator(self, subscriber_id) -> bool:
+        """
+        Check if the subscriber is not the thread creator or response creator
+        """
+        return (
+            subscriber_id != int(self.thread.user_id) and
+            subscriber_id != int(self.creator.id) and
+            subscriber_id != int(self.parent_response.user_id)
+        )
 
     def send_response_on_followed_post_notification(self):
         """
@@ -138,7 +148,7 @@ class DiscussionNotificationSender:
                     # Check if the subscriber is not the thread creator or response creator
                     subscriber_id = int(subscriber.get('subscriber_id'))
                     # do not send notification to the user who created the response and the thread
-                    if subscriber_id != int(self.thread.user_id) and subscriber_id != int(self.creator.id):
+                    if self._check_if_subscriber_is_not_thread_or_content_creator(subscriber_id):
                         users.append(subscriber_id)
             else:
                 has_more_subscribers = False
