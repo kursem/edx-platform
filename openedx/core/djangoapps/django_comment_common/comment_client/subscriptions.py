@@ -18,7 +18,7 @@ class Subscription(models.Model):
     ]
 
     type = 'subscriber'
-    base_url = f"{settings.PREFIX}/subscriptions"
+    base_url = f"{settings.PREFIX}/threads"
 
     @classmethod
     def fetch(cls, thread_id, query_params):
@@ -35,7 +35,7 @@ class Subscription(models.Model):
         )
         response = utils.perform_request(
             'get',
-            cls.url(action='get', params=params),
+            cls.url(action='get', params=params) + "/subscriptions",
             params,
             metric_tags=[],
             metric_action='subscription.get',
