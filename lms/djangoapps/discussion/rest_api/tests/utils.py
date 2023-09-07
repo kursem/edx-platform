@@ -432,7 +432,7 @@ class CommentsServiceMockMixin:
         assert httpretty.is_enabled(), 'httpretty must be enabled to mock calls.'
         httpretty.register_uri(
             httpretty.GET,
-            f"http://localhost:4567/api/v1/subscriptions/{thread_id}",
+            f"http://localhost:4567/api/v1/threads/{thread_id}/subscriptions",
             body=json.dumps(response),
             status=200
         )
