@@ -217,7 +217,13 @@ class UserNotificationPreferenceAPITest(ModuleStoreTestCase):
             'notification_preference_config': {
                 'discussion': {
                     'enabled': True,
-                    'core_notification_types': ['new_comment_on_response', 'new_comment', 'new_response'],
+                    'core_notification_types': [
+                        'new_comment_on_response',
+                        'new_comment',
+                        'new_response',
+                        'response_on_followed_post',
+                        'comment_on_followed_post'
+                    ],
                     'notification_types': {
                         'core': {
                             'web': True,
@@ -228,8 +234,6 @@ class UserNotificationPreferenceAPITest(ModuleStoreTestCase):
                         },
                         'new_discussion_post': {'web': False, 'email': False, 'push': False, 'info': ''},
                         'new_question_post': {'web': False, 'email': False, 'push': False, 'info': ''},
-                        'response_on_followed_post': {'web': False, 'email': False, 'push': False, 'info': ''},
-                        'comment_on_followed_post': {'web': False, 'email': False, 'push': False, 'info': ''}
                     },
                     'non_editable': {
                         'core': ['web']
