@@ -57,7 +57,7 @@ a MAC (via TimestampSigner):
 
     SHA256(version '|' session_id '|' user_id '|')
 
-TimestampSigner uses HMAC-SHA1 to derive a key from key_salt and the
+TimestampSigner uses HMAC-SHA256 to derive a key from key_salt and the
 server's SECRET_KEY; see django.core.signing for more details on the
 structure of the output (which takes the form of colon-delimited
 Base64.)
