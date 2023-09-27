@@ -26,6 +26,8 @@ from common.djangoapps.student.roles import (
     OrgStaffRole
 )
 
+from openedx.core.djangoapps.course_roles.helpers import course_permission_check
+
 # Studio permissions:
 STUDIO_EDIT_ROLES = 8
 STUDIO_VIEW_USERS = 4
@@ -227,5 +229,5 @@ def _check_caller_authority(caller, role):
     if isinstance(role, (GlobalStaff, CourseCreatorRole, OrgContentCreatorRole)):  # lint-amnesty, pylint: disable=no-else-raise
         raise PermissionDenied
     elif isinstance(role, CourseRole):  # instructors can change the roles w/in their course
-        if not user_has_role(caller, CourseInstructorRole(role.course_key)):
+        if not user_has_role(caller, CourseInstructorRole(role.course_key)) or not course_permission_check(caller, "manage_all_users", role.course_key):
             raise PermissionDenied
