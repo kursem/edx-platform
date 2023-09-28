@@ -935,8 +935,6 @@ def invalidate_certificate_legacy_and_new(user_id, course_key_or_id):
     The call in services.py occurs when an exam attempt is rejected in the legacy exams backend, edx-proctoring.
     The call in handlers.py is occurs when an exam attempt is rejected in the newer exams backend, edx-exams.
     """
-    print("YUH")
-
     course_key = _get_key(course_key_or_id, CourseKey)
     if _is_on_certificate_allowlist(user_id, course_key):
         log.info(f'User {user_id} is on the allowlist for {course_key}. The certificate will not be invalidated.')
