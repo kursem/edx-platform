@@ -1,7 +1,6 @@
 """
 Unit tests for certificates signals
 """
-import json
 from datetime import datetime, timezone
 from unittest import mock
 from uuid import uuid4
@@ -13,7 +12,6 @@ from openedx_events.learning.data import ExamAttemptData, UserData, UserPersonal
 from openedx_events.learning.signals import EXAM_ATTEMPT_REJECTED
 
 from common.djangoapps.student.tests.factories import UserFactory
-from lms.djangoapps.courseware.models import StudentModule
 from lms.djangoapps.certificates.handlers import handle_exam_attempt_rejected_event
 
 
