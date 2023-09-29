@@ -20,8 +20,6 @@ from eventtracking import tracker
 from opaque_keys.edx.django.models import CourseKeyField
 from organizations.api import get_course_organization_id
 
-from django.core.exceptions import ObjectDoesNotExist
-
 from common.djangoapps.course_modes.models import CourseMode
 from common.djangoapps.student.api import is_user_enrolled_in_course
 from common.djangoapps.student.models import CourseEnrollment

@@ -4,7 +4,6 @@ Handlers for credits
 import logging
 
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ObjectDoesNotExist
 from django.dispatch import receiver
 from openedx_events.learning.signals import EXAM_ATTEMPT_REJECTED
 
