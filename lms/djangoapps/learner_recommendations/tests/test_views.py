@@ -163,7 +163,7 @@ class TestRecommendationsContextView(APITestCase):
     def setUp(self):
         super().setUp()
         self.user = UserFactory()
-        self.password = "test"
+        self.password = "password"
         self.url = reverse_lazy("learner_recommendations:recommendations_context")
 
     @mock.patch("lms.djangoapps.learner_recommendations.views.country_code_from_ip")

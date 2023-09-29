@@ -2758,7 +2758,7 @@ class CourseDiscussionSettingsAPIViewTest(APITestCase, UrlResetMixin, ModuleStor
             discussion_topics={"Test Topic": {"id": "test_topic"}}
         )
         self.path = reverse('discussion_course_settings', kwargs={'course_id': str(self.course.id)})
-        self.password = 'edx'
+        self.password = 'password'
         self.user = UserFactory(username='staff', password=self.password, is_staff=True)
 
     def _get_oauth_headers(self, user):
@@ -3056,7 +3056,7 @@ class CourseDiscussionRolesAPIViewTest(APITestCase, UrlResetMixin, ModuleStoreTe
             run="z",
             start=datetime.now(UTC),
         )
-        self.password = 'edx'
+        self.password = 'password'
         self.user = UserFactory(username='staff', password=self.password, is_staff=True)
         course_key = CourseKey.from_string('course-v1:x+y+z')
         seed_permissions_roles(course_key)
